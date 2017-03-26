@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<input type="text" />
-			<app-message [message]="message" (editClicked)="onEditClicked($event)"></app-message>
+			<app-message *ngFor="let message of messages" [message]="message" (editClicked)="onEditClicked($event)"></app-message>
 		</div>
 	</div>
 </div>
