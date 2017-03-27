@@ -1,7 +1,9 @@
 <div class="col-md-8 col-md-offset-2">
-	<div class="form-group">
-		<label for="content">Content</label>
-		<input id="content" class="form-control" type="text" #input />
-	</div>
-	<button class="btn btn-primary" type="submit" (click)="saveMessage(input.value)">Save</button>
+	<form #f="ngForm" (ngSubmit)="submitMessageForm(f)">
+		<div class="form-group">
+			<label for="content">Content</label>
+			<input id="content" name="content" class="form-control" type="text" required ngModel />
+		</div>
+		<button class="btn btn-primary" type="submit" [disabled]="!f.valid">Save</button>
+	</form>
 </div>

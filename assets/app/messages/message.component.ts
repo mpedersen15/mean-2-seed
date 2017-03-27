@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Measage } from './message.model';
+import { Message } from './message.model';
 @Component({
 	selector: 'app-message',
 	templateUrl: './message.component.html',

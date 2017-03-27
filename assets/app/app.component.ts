@@ -11,7 +11,7 @@ export class AppComponent {
 		new Message('A second message', 'Matt'),
 	];
 	
-	onEditClicked(content: string){
+	/* onEditClicked(content: string){
 		this.message.content = content
-	}
+	} */
 }
