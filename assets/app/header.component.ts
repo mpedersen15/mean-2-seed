@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
 		<header>
 			<nav class="col-md-8 col-md-offset-2">
 				<ul class="nav nav-pills">
-					<li><a href="">Messenger</a></li>
-					<li><a href="">Authentication</a></li>
+					<li routerLinkActive="active"><a href="" [routerLink]="['/messages']" >Messenger</a></li>
+					<li routerLinkActive="active"><a href="" [routerLink]="['/authentication']" >Authentication</a></li>
 				</ul>
 			</nav>
 		</header>
