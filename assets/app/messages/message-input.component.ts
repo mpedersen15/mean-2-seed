@@ -13,7 +13,10 @@ export class MessageInputComponent {
 	
 	submitMessageForm(form: NgForm){
 		console.log('form', form);
-		this.messageService.addMessage(new Message(form.value.content, 'Matt'));
+		this.messageService.addMessage(new Message(form.value.content, 'Matt'))
+			.subscribe(res => {
+				console.log('add message subscribe', res);
+			});
 		form.resetForm();
 	}
 }
