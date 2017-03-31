@@ -15,6 +15,13 @@ export class MessageListComponent implements OnInit{
 	constructor(public messageService: MessageService){}
 	
 	ngOnInit(){
-		this.messages = this.messageService.getMessages(); // we don't return a slice of the service messages, this sets the messages array to a REFERENCE of the MessageService messages array
+		this.messages = this.messageService.getMessages()
+			.subscribe(
+				(messages) => {
+					console.log('messages in ngOnInit', messages);
+					this.messages = messages;
+				},
+				err => console.log('error getting messages', err)
+			); // we don't return a slice of the service messages, this sets the messages array to a REFERENCE of the MessageService messages array
 	}
 }

@@ -24,7 +24,16 @@ export class MessageService {
 	}
 	
 	getMessages(){
-		return this.messages;
+		return this.http.get('http://localhost:3000/messages/').map(res => {
+			const messages = res.json().obj;
+			let transformedMessages: Message[] = [];
+			for (let message of messages){
+				transformedMessages.push(new Message(message.content, 'Dummy Author', message.id, null));
+			}
+			//this.messages = transformedMessages;
+			console.log('in getMessages', transformedMessages);
+			return transformedMessages;
+		});
 	}
 	
 	deleteMessage(message: Message){
