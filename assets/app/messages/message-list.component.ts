@@ -5,7 +5,7 @@ import { Message } from './message.model';
 	selector: 'app-message-list',
 	template: `
 		<div class="col-md-8 col-md-offset-2">
-			<app-message *ngFor="let message of messages" [message]="message" (editClicked)="onEditClicked($event)"></app-message>
+			<app-message *ngFor="let message of messages" [message]="message"></app-message>
 		</div>
 	`
 })
@@ -15,9 +15,9 @@ export class MessageListComponent implements OnInit{
 	constructor(public messageService: MessageService){}
 	
 	ngOnInit(){
-		this.messages = this.messageService.getMessages()
+		this.messageService.getMessages()
 			.subscribe(
-				(messages) => {
+				(messages) => {  
 					console.log('messages in ngOnInit', messages);
 					this.messages = messages;
 				},

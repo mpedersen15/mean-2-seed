@@ -41,4 +41,39 @@ router.post('/', function(req, res, next){ // only '/' because there is a /messa
 	})
 });
 
+router.patch('/:id', function(req, res, next){
+	Message.findById(req.params.id, (err, message) => {
+		if (err){
+			return res.status(500).json({
+				title: 'An error occured',
+				error: error.message
+			});
+		}
+		
+		if (!message){
+			return res.status(500).json({
+				title: 'Message not found',
+				error: {
+					message: 'Message not found'
+				}
+			})
+		}
+		
+		message.content = req.body.content;
+		message.save((error,result) => {
+			if (error){
+				return res.status(500).json({
+					title: 'An error occured',
+					error: error.message
+				});
+			}
+			
+			res.status(201).json({
+				message: 'Message Updated',
+				object: result
+			});
+		})
+	});
+});
+
 module.exports = router;
