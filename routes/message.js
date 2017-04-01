@@ -35,7 +35,7 @@ router.post('/', function(req, res, next){ // only '/' because there is a /messa
 		
 		res.status(201).json({
 			message: 'Message Saved',
-			object: result
+			obj: result
 		});
 		
 	})
@@ -70,10 +70,44 @@ router.patch('/:id', function(req, res, next){
 			
 			res.status(201).json({
 				message: 'Message Updated',
-				object: result
+				obj: result
 			});
 		})
 	});
 });
+
+router.delete('/:id', (req, res, next) => {
+	Message.findById(req.params.id, (err, message) => {
+		if (err){
+			return res.status(500).json({
+				title: 'An error occured',
+				error: error.message
+			});
+		}
+		
+		if (!message){
+			return res.status(500).json({
+				title: 'Message not found',
+				error: {
+					message: 'Message not found'
+				}
+			})
+		}
+		
+		message.remove((error,result) => {
+			if (error){
+				return res.status(500).json({
+					title: 'An error occured',
+					error: error.message
+				});
+			}
+			
+			res.status(200).json({
+				message: 'Message Deleted',
+				obj: result
+			});
+		})
+	});
+})
 
 module.exports = router;

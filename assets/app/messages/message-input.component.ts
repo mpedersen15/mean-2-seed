@@ -14,6 +14,7 @@ export class MessageInputComponent implements OnInit{
 	submitMessageForm(form: NgForm){
 		console.log('form', form);
 		if (this.message){
+			console.log('in edit case of submit form');
 			this.message.content = form.value.content;
 			this.messageService.updateMessage(this.message)
 				.subscribe( res => {
@@ -21,6 +22,7 @@ export class MessageInputComponent implements OnInit{
 				});
 			this.message = null;
 		}else{
+			console.log('in add case of submit form');
 			this.messageService.addMessage(new Message(form.value.content, 'Matt'))
 				.subscribe(res => {
 					console.log('add message subscribe', res);

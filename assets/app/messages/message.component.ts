@@ -31,6 +31,7 @@ export class MessageComponent{
 	}
 	
 	deleteMessage(){
-		this.messageService.deleteMessage(this.message);
+		this.messageService.deleteMessage(this.message)
+			.subscribe( res => console.log('message deleted? ', res));
 	}
 }

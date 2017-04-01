@@ -18,6 +18,7 @@ export class MessageService {
 		return this.http.post('http://localhost:3000/messages/', body, {headers})
 			.map( res => {
 				const result = res.json();
+				console.log('result in addMessage', result);
 				const message = new Message(result.obj.content, 'Dummy', result.obj._id, null);
 				this.messages.push(message);
 				return message;
@@ -40,6 +41,8 @@ export class MessageService {
 	
 	deleteMessage(message: Message){
 		this.messages.splice(this.messages.indexOf(message), 1);
+		return this.http.delete('http://localhost:3000/messages/'+message.messageId)
+			.map( res => res.json());
 	}
 	
 	updateMessage(message: Message){
