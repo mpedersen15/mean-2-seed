@@ -7,6 +7,7 @@ import { MessagesComponent } from "./messages/messages.component";
 import { MessageListComponent } from "./messages/message-list.component";
 import { MessageInputComponent } from "./messages/message-input.component";
 import { MessageService } from "./messages/message.service";
+import { AuthService } from "./authentication/auth.service";
 import { HeaderComponent } from "./header.component";
 import { AuthenticationComponent } from "./authentication/authentication.component";
 import { SignupComponent } from './authentication/signup.component';
@@ -30,7 +31,7 @@ import { HttpModule } from '@angular/http';
     ],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, myRoutes, HttpModule],
     bootstrap: [AppComponent],
-	providers: [MessageService]
+	providers: [MessageService, AuthService]
 })
 export class AppModule {
 
