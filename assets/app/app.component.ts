@@ -6,10 +6,10 @@ import { Message } from './messages/message.model';
 	
 })
 export class AppComponent {
-    messages: Message[] = [
+    /* messages: Message[] = [
 		new Message('A new message', 'Matt'),
 		new Message('A second message', 'Matt'),
-	];
+	]; */
 	
 	/* onEditClicked(content: string){
 		this.message.content = content
