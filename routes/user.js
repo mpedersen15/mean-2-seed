@@ -29,7 +29,7 @@ router.post('/', function(req, res, next){
 
 router.post('/login', function(req, res, next){
 	console.log('in login route', req.body);
-	User.findOne({email: 'mattp152002@hotmail.com'}, (err, user) => {
+	User.findOne({email: req.body.email}, (err, user) => {
 		console.log(user);
 		if (err){
 			console.log('err',err);

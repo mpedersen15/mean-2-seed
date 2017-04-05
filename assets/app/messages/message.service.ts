@@ -14,8 +14,9 @@ export class MessageService {
 		//this.messages.push(message);
 		console.log('message added', this.messages);
 		const body = JSON.stringify(message);
+		const token = localStorage.getItem('token') ? '?token='+localStorage.getItem('token') : '';
 		var headers = new Headers({'Content-Type': 'application/json'})
-		return this.http.post('http://localhost:3000/messages/', body, {headers})
+		return this.http.post('http://localhost:3000/messages/' + token, body, {headers})
 			.map( res => {
 				const result = res.json();
 				console.log('result in addMessage', result);
@@ -41,15 +42,17 @@ export class MessageService {
 	
 	deleteMessage(message: Message){
 		this.messages.splice(this.messages.indexOf(message), 1);
-		return this.http.delete('http://localhost:3000/messages/'+message.messageId)
+		const token = localStorage.getItem('token') ? '?token='+localStorage.getItem('token') : '';
+		return this.http.delete('http://localhost:3000/messages/'+message.messageId + token)
 			.map( res => res.json());
 	}
 	
 	updateMessage(message: Message){
 		console.log('in update message', message);
 		const body = JSON.stringify(message);
+		const token = localStorage.getItem('token') ? '?token='+localStorage.getItem('token') : '';
 		var headers = new Headers({'Content-Type': 'application/json'})
-		return this.http.patch('http://localhost:3000/messages/'+message.messageId, body, {headers})
+		return this.http.patch('http://localhost:3000/messages/'+message.messageId + token, body, {headers})
 			.map( res => res.json());
 	}
 	
