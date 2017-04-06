@@ -13,6 +13,7 @@ import { AuthenticationComponent } from "./authentication/authentication.compone
 import { SignupComponent } from './authentication/signup.component';
 import { LoginComponent } from './authentication/login.component';
 import { LogoutComponent } from './authentication/logout.component';
+import { ErrorComponent } from './errors/error.component';
 import { myRoutes } from './app.routes';
 import { HttpModule } from '@angular/http';
 
@@ -27,7 +28,8 @@ import { HttpModule } from '@angular/http';
 		AuthenticationComponent,
 		SignupComponent,
 		LoginComponent,
-		LogoutComponent
+		LogoutComponent,
+		ErrorComponent
     ],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, myRoutes, HttpModule],
     bootstrap: [AppComponent],
